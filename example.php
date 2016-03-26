@@ -71,5 +71,15 @@
     }
   }
 
-
-?>
+  echo "\n\n".'Films:'."\n\n";
+  $films = STAPIClient::filmslist()
+    ->exec($error);
+  if (!$error) {
+    foreach ($films as $film) {
+      print_r($film);
+    }
+  }
+  else {
+    echo 'Error: '.$error;
+    return false;
+  }

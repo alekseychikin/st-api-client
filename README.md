@@ -1,6 +1,6 @@
 # СаранскТудэй API Client
 ## PHP-реализация
-### Документация <http://saransktoday.ru/api/1.0/>
+### Документация <http://saransktoday.ru/api/1.1/>
 
 
 ## Список категорий
@@ -61,4 +61,9 @@ $event = STAPIClient::event()
 Единственная обязательная опция:
 ```
 $event = STAPIClient::event()->id(1268)->exec();
+```
+
+## Список фильмов
+```
+$films = $films = STAPIClient::filmslist()->exec();
 ```

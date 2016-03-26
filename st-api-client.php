@@ -5,7 +5,7 @@
     private $connect = false;
     private $host = 'saransktoday.ru';
     private $port = '80';
-    private $version = '1.0';
+    private $version = '1.1';
     private $action = '';
     private $offset = 0;
     private $limit = 100;
@@ -36,6 +36,11 @@
     public static function event()
     {
       return new self('event');
+    }
+
+    public static function filmslist()
+    {
+      return new self('filmslist');
     }
 
     public function id($id)
@@ -99,6 +104,9 @@
         case 'event':
           return $this->eventExec($error);
           break;
+        case 'filmslist':
+          return $this->filmslistExec($error);
+          break;
         default:
           $error = 'Unknown type';
       }
@@ -111,6 +119,12 @@
         'offset' => $this->offset,
         'limit' => $this->limit
       );
+      return $this->execWithParams($params, $error);
+    }
+
+    private function filmslistExec(& $error)
+    {
+      $params = array();
       return $this->execWithParams($params, $error);
     }
 
@@ -180,5 +194,3 @@
       }
     }
   }
-
-?>
